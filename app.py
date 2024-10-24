@@ -7,10 +7,10 @@ import pickle
 flask_app = Flask(__name__)
 
 # Load the scaler and model
-review_model = pickle.load(open("/home/site/wwwroot/model_review.pkl", "rb"))
-churn_model = pickle.load(open("/home/site/wwwroot/model_churn.pkl", "rb"))
+review_model = pickle.load(open('model_review.pkl', "rb"))
+churn_model = pickle.load(open('model_churn.pkl', "rb"))
 
-dataset = pd.read_csv("/home/site/wwwroot/dataset_features_v1-5.csv")
+dataset = pd.read_csv('dataset_features_v1-5.csv')
 
 
 @flask_app.route("/")
@@ -48,4 +48,4 @@ def predict():
     return jsonify({'prediction': prediction_text})
 
 if __name__ == "__main__":
-    flask_app.run()
+    flask_app.run(debug=True, port=5000)
