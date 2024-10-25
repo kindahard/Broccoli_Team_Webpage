@@ -1,6 +1,7 @@
 import pandas as pd
 from flask import Flask, request, jsonify, render_template
 import pickle
+import sklearn
 
 # Create flask app
 flask_app = Flask(__name__)
@@ -16,7 +17,6 @@ dataset = pd.read_csv('dataset_features_v1-5.csv')
 def Home():
     return render_template("index.html")
 
-@flask_app.route("/predict", methods=["POST"])
 @flask_app.route("/predict", methods=["POST"])
 def predict():
     # Get form data
