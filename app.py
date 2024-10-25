@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 from flask import Flask, request, jsonify, render_template
 import pickle
@@ -48,4 +47,4 @@ def predict():
     return jsonify({'prediction': prediction_text})
 
 if __name__ == "__main__":
-    flask_app.run(debug=True, port=5000)
+    flask_app.run(debug=True)
