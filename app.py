@@ -4,7 +4,7 @@ import pickle
 import sklearn
 
 # Create flask app
-flask_app = Flask(__name__)
+app = Flask(__name__)
 
 # Load the scaler and model
 review_model = pickle.load(open('model_review.pkl', "rb"))
@@ -13,11 +13,11 @@ churn_model = pickle.load(open('model_churn.pkl', "rb"))
 dataset = pd.read_csv('dataset_features_v1-5.csv')
 
 
-@flask_app.route("/")
+@app.route("/")
 def Home():
     return render_template("index.html")
 
-@flask_app.route("/predict", methods=["POST"])
+@app.route("/predict", methods=["POST"])
 def predict():
     # Get form data
     input_data = [str(x) for x in request.form.values()]
@@ -47,4 +47,4 @@ def predict():
     return jsonify({'prediction': prediction_text})
 
 if __name__ == "__main__":
-    flask_app.run(host='0.0.0.0', port=8000)
+    app.run(depug=True)
